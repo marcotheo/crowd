@@ -12,8 +12,8 @@ export default function LinkSwitch() {
   const inactiveCss = 'rounded-none bg-gray-300 font-semibold text-black hover:bg-gray-200';
 
   return (
-    <div className='flex justify-end '>
-      <div className='flex overflow-hidden rounded-lg '>
+    <div className='hidden justify-end xs:flex'>
+      <div className='flex overflow-hidden rounded-lg'>
         <Button className={pathname === '/login' ? activeCss : inactiveCss} onClick={() => router.push('/login')}>
           Sign In
         </Button>

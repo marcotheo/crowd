@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
@@ -10,8 +11,6 @@ import { TbUser } from 'react-icons/tb';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import FormInput from '@/components/ui/FormInput';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
 import PasswordInput from '@/components/ui/passwordInput';
 import Alert from '@/components/ui/alert';
 import { Collapsible } from '@/components/ui/collapsible';
@@ -65,21 +64,20 @@ export default function LoginForm() {
       </Collapsible>
       <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
         <FormInput control={form.control} name='username' placeholder='Username' Icon={TbUser} />
-        <PasswordInput control={form.control} name='password' placeholder='Password' />
-
-        <div className='flex justify-between'>
-          <div className='flex items-center space-x-2'>
-            <Checkbox id='terms' />
-            <Label htmlFor='terms'>Remember me</Label>
-          </div>
-          <div>
-            <Button variant='link'>Forgot Password?</Button>
-          </div>
+        <div>
+          <PasswordInput control={form.control} name='password' placeholder='Password' />
+          <Button variant='link' className='p-0'>
+            Forgot Password?
+          </Button>
         </div>
 
         <Button type='submit' className='w-full text-lg' size='lg'>
           Sign In
         </Button>
+
+        <div className='w-full p-0 text-center text-sm font-semibold text-accessory xs:hidden'>
+          <Link href='/register'>Sign Up Now</Link>
+        </div>
       </form>
     </Form>
   );

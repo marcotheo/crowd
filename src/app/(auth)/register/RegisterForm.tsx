@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react';
@@ -78,7 +79,7 @@ export default function RegisterForm() {
 
         <div className='flex items-center space-x-2'>
           <Checkbox id='terms' />
-          <Label htmlFor='terms'>
+          <Label htmlFor='terms' className='text-xs sm:text-sm'>
             By signing up, I agree with <span className='text-accessory'>terms and conditions</span>
           </Label>
         </div>
@@ -88,6 +89,15 @@ export default function RegisterForm() {
         <Button type='submit' className='w-full text-lg' size='lg'>
           Sign Up
         </Button>
+
+        <div className='w-full p-0 text-center text-sm font-semibold text-accessory xs:hidden'>
+          <span className='text-gray-300'>
+            Already have an Account?{' '}
+            <Link href='/login' className='text-accessory'>
+              Login now
+            </Link>
+          </span>
+        </div>
       </form>
     </Form>
   );
